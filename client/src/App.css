@@ -1,0 +1,256 @@
+.App {
+  text-align: center;
+}
+
+.obj-container {
+  max-width: 95%;
+  margin: 0 auto;
+  position: relative;
+
+  text-align: left;
+  /*   border: 1px solid black;
+  border-radius: 5px; */
+}
+
+.program-heading {
+  text-align: center;
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+.degree-heading {
+  text-align: center;
+  font-size: 12px;
+  font-variant: small-caps;
+  font-weight: bold;
+  background-color: rgb(242, 242, 242);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 2px;
+}
+
+.degree-table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 3px; /* Apply cell padding */
+}
+
+/* tr:nth-child(even) :nth-child(odd) {
+  background: rgba(100, 255, 50, 0.3);
+} */
+/* tr:nth-child(odd) :nth-child(even) {
+  background: rgba(255, 255, 255, 0.3);
+} */
+
+.degree-table tr td {
+  border: 1px solid gainsboro;
+}
+.degree-table tr:first-child td {
+  border-top: 0;
+}
+
+.degree-table td:first-child {
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.degree-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.degree-table tr td {
+  border-bottom: 0;
+  border-top: 0;
+}
+
+.degree-table tr td:last-child {
+  border-right: 0;
+}
+
+.th {
+  font-size: 12px;
+  font-weight: normal;
+  border: black 1px solid;
+}
+
+.degree-table th:first-child {
+  border-left: 0;
+}
+
+.degree-table th:last-child {
+  border-right: 0;
+}
+
+.th.center {
+  text-align: center;
+}
+
+.th.center.curriculum {
+  width: 14%;
+  background-color: rgb(242, 242, 242);
+}
+
+.th.center.fall {
+  width: 21.5%;
+  background-color: rgb(244, 176, 132);
+}
+
+.th.center.winter {
+  width: 21.5%;
+  background-color: rgb(209, 240, 255);
+}
+
+.th.center.spring {
+  width: 21.5%;
+  background-color: rgb(198, 224, 180);
+}
+
+.th.center.summer {
+  width: 21.5%;
+  background-color: rgb(255, 230, 153);
+}
+
+.degree-content {
+  font-size: 11px;
+  font-weight: normal;
+  text-align: center;
+  border-bottom: 1px solid gainsboro !important;
+}
+
+.note-content {
+  font-size: 11px;
+  font-weight: normal;
+  border-bottom: 1px solid gainsboro !important;
+}
+
+.masters-degree-1 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(255, 255, 171);
+}
+
+.masters-degree-2 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(255, 193, 193);
+}
+
+.masters-degree-3 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(209, 240, 255);
+}
+.masters-degree-4 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(255, 233, 163);
+}
+
+.masters-degree-5 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(198, 224, 180);
+}
+
+.stackable-certificates-1 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(255, 215, 175);
+}
+
+.stackable-certificates-2 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(255, 207, 55);
+}
+
+.stackable-certificates-3 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(201, 255, 228);
+}
+
+.stackable-certificates-4 {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: rgb(226, 197, 255);
+}
+
+/* ---------- Collapsible Panel ---------- */
+
+.wrap-collabsible {
+  max-width: 95%;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid black;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important ;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+  color: black;
+  background: rgb(248, 255, 255);
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+  color: lightgrey;
+}
+
+.lbl-toggle::before {
+  content: " ";
+  display: inline-block;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: 0.7rem;
+  transform: translateY(-2px);
+
+  transition: transform 0.2s ease-out;
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 100vh;
+}
+
+.toggle:checked + .lbl-toggle {
+  border: 0;
+}
+
+.collapsible-content .content-inner {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

@@ -1,0 +1,58 @@
+version: "3.5"
+
+services:
+
+  app:
+    build:
+      context: .
+    env_file:
+      - production.env
+      - mysql.env
+    restart: unless-stopped
+    networks:
+      - front
+      - application-backend
+    volumes:
+      - type: bind
+        consistency: delegated
+        source: ./
+        target: /app/
+      - /app/node_modules
+      - /app/client/node_modules
+    command: ash -c "cd client && yarn install && cd .. && yarn install && yarn run prod"
+    labels:
+      traefik.enable: true
+      traefik.port: 80
+      traefik.protocol: http
+      # This value is provided from .env file
+      traefik.frontend.rule: Host:seschedule.drift.nps.edu
+      traefik.frontend.priority: 1
+      traefik.docker.network: traefik_front
+      traefik.frontend.headers.customResponseHeaders: Strict-Transport-Security:max-age=31536000;includeSubDomains
+    depends_on:
+      - mysql_db
+    container_name: se-schedule-app
+
+  mysql_db:
+    image: mysql:5.7
+    restart: always
+    networks:
+      - application-backend
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    env_file:
+      - mysql.env
+    container_name: se-schedule-db
+
+networks:
+  front:
+    external:
+      name: traefik_front
+  application-backend: 
+    driver: bridge    
+
+volumes:
+  mysql-data:
+

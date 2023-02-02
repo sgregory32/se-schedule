@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  mysql_db:
+    image: mysql:5.7
+    restart: always
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    env_file:
+      - mysql.env
+    container_name: se-schedule-db
+
+  app:
+    stdin_open: true
+    build: 
+      context: .
+    env_file:
+      - development.env  
+      - mysql.env     
+    volumes:
+      - type: bind
+        consistency: delegated
+        source: ./
+        target: /app/
+      - /app/node_modules
+      - /app/client/node_modules
+    ports:
+      - 3000:3000
+      - 3001:3001
+    command: ash -c "cd client && yarn install && cd .. && yarn install && yarn run start"
+    container_name: se-schedule-app 
+
+  adminer:
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    depends_on:
+      - mysql_db
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql_db
+    container_name: se-schedule-db-admin  
+
+volumes:
+  mysql-data:    
