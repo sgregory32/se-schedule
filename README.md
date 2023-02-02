@@ -1,7 +1,5 @@
 # Systems Engineering Distance Learning Schedule
 
-Runs on https://seschedule.drift.nps.edu/
-
 ### Includes:
 
 - React
@@ -21,8 +19,3 @@ Runs on https://seschedule.drift.nps.edu/
 ### Deployment
 
     docker-compose -f docker-compose.prod.yml up -d --build
-
-### Production Server Detail
-
-- Server: drift.nps.edu
-- Directory: /home/rangeruser/websites/se-schedule
